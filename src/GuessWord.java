@@ -12,6 +12,7 @@ public class GuessWord {
     Character[] CharsInWord = new Character[5];
     ArrayList<Character> CharsNotInWord = new ArrayList<>();
     HashMap <Character, int[]> WrongPlaces = new HashMap<>();
+    static int LoopCounter = 0;
 
     int index = 0;
     
@@ -41,6 +42,7 @@ public class GuessWord {
     public void doesNotContain(Character[] x){
         for (int i = 0; i < x.length; i++) {
             CharsNotInWord.add(x[i]);
+            LoopCounter++;
 
         }
     }
@@ -72,6 +74,7 @@ public class GuessWord {
             if(!doesContain){
                 return false;
             }
+            LoopCounter++;
         }
         return doesContain;
     }
@@ -95,6 +98,7 @@ public class GuessWord {
                 if(doesContain){
                     return true;
                 }
+                LoopCounter++;
             }
         }
 
@@ -115,6 +119,7 @@ public class GuessWord {
             if (!rightIndex){
                 return false;
             }
+            LoopCounter++;
 //            System.out.println(Word.toCharArray()[notNullIndex] + " :: " + chars[notNullIndex]);
         }
         return rightIndex;
@@ -132,12 +137,16 @@ public class GuessWord {
             if(chars[i] != null) {
                 index.add(i);
             }
+            LoopCounter++;
+
         }
         int[] indexes = new int[index.size()];
 
 //        System.out.println(index);
         for (int i = 0; i < index.size(); i++) {
             indexes[i] = index.get(i);
+            LoopCounter++;
+
         }
 
         return indexes;
@@ -154,6 +163,7 @@ public class GuessWord {
         Character[] chars = new Character[CharsNotInWord.size()];
         for (int i = 0; i < CharsNotInWord.size(); i++) {
             chars[i] = CharsNotInWord.get(i);
+            LoopCounter++;
         }
 
         return chars;
@@ -172,6 +182,7 @@ public class GuessWord {
             if(contains){
                 return true;
             }
+            LoopCounter++;
         }
         return false;
     }
@@ -199,9 +210,11 @@ public class GuessWord {
             if((!containsWrongIndexedChars) && rightIndex && doesContain && (!containsWrongChars)){
                 possibleWords.add(CurrentWord);
             }
+            LoopCounter++;
 
 
         }
+        System.out.println("Compleated in :: " + LoopCounter + " Iterations" );
         getLetters(nullIndex(), possibleWords);
         System.out.println("Best Guess :: " + getBestWord(possibleWords));
         return possibleWords;
@@ -218,11 +231,14 @@ public class GuessWord {
             if(IndexedWord[i] == null){
                 Index.add(i);
             }
+            LoopCounter++;
+
         }
 
         int [] ints = new int[Index.size()];
         for (int i = 0; i < Index.size(); i++) {
             ints[i] = Index.get(i);
+            LoopCounter++;
         }
         return ints;
     }
@@ -250,6 +266,7 @@ public class GuessWord {
                 }else {
                     Occurence.put(characters[k], Occurence.get(characters[k])+1);
                 }
+                LoopCounter++;
             }
 
         }
@@ -258,6 +275,8 @@ public class GuessWord {
             if(Occurence.containsKey(CharsInWord[i])){
                 Occurence.remove(CharsInWord[i]);
             }
+            LoopCounter++;
+
         }
 
         System.out.println(Occurence);
@@ -282,6 +301,7 @@ public class GuessWord {
                 highScore = score;
                 highScoreWord = Word;
             }
+            LoopCounter++;
         }
 
         System.out.println("High Score --> " + highScoreWord + " :: " + highScore);

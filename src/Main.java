@@ -10,15 +10,23 @@ public class Main {
 
         //TODO Build CLI UI
 
-        g.doesNotContain(new Character[]{'c','r','a', 's','o','w'});
-        g.doesContain(new Character[]{'n','e','d'});
+        g.doesContain(new Character[]{'c','a','e'});
+        g.putIndex('c', 0);
+
+        g.putWrongLetterPlacement('a', new int[]{1,2});
+        g.putWrongLetterPlacement('e', new int[]{3,4});
+
+        g.doesNotContain(new Character[]{'r','n','s'});
+
+//        g.doesNotContain(new Character[]{'c','r','a','n'});
+//        g.doesContain(new Character[]{'e','s','l'});
+//        g.putIndex('e', 4);
 //        g.putIndex('o', 1);
-//        g.putIndex('n', 4);
-        g.putIndex('n',1);
-        g.putIndex('d',2);
-        g.putWrongLetterPlacement('n', new int[]{3,2});
-        g.putWrongLetterPlacement('e', new int[]{0,4,1});
-        g.putWrongLetterPlacement('d', new int[]{3});
+////        g.putIndex('r',1);
+////        g.putIndex('n',3);
+//        g.putWrongLetterPlacement('s', new int[]{2});
+////        g.putWrongLetterPlacement('e', new int[]{0,4,1});
+////        g.putWrongLetterPlacement('d', new int[]{3});
 
 
         //front

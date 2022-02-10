@@ -203,6 +203,7 @@ public class GuessWord {
 
         }
         getLetters(nullIndex(), possibleWords);
+        System.out.println("Best Guess :: " + getBestWord(possibleWords));
         return possibleWords;
     }
 
@@ -263,6 +264,31 @@ public class GuessWord {
         return Occurence;
     }
 
+    public String getBestWord(ArrayList<String> Letters) {
+        Map<Character, Integer> chars = getLetters(nullIndex(), Letters);
+        int highScore = 0;
+        String highScoreWord = "";
+
+        for (int i = 0; i < Letters.size(); i++) {
+            String Word = Letters.get(i);
+            char[] wordArr = Word.toCharArray();
+            int score = 0;
+            for (char c : wordArr) {
+                if (chars.get(c) != null) {
+                    score += chars.get(c);
+                }
+            }
+            if (highScore < score) {
+                highScore = score;
+                highScoreWord = Word;
+            }
+        }
+
+        System.out.println("High Score --> " + highScoreWord + " :: " + highScore);
+        return highScoreWord;
+
+
+    }
 
 
 

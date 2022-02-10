@@ -1,6 +1,5 @@
 /**
  * Built and Developed by Arnav Dadarya
- * Built and Developed by Arnav Dadarya
  */
 
 import java.util.ArrayList;
@@ -56,7 +55,19 @@ public class GuessWord {
     }
 
     public void putWrongLetterPlacement(Character x, int[] index){
-       WrongPlaces.put(x, index);
+        if(WrongPlaces.containsKey(x)){
+            int newIndex[] = new int[index.length + WrongPlaces.get(x).length];
+            for (int i = 0; i < WrongPlaces.get(x).length; i++) {
+                newIndex[i] = WrongPlaces.get(x)[i];
+            }
+            int counter = 0;
+            for (int i = WrongPlaces.size()-1; i < newIndex.length; i++) {
+                newIndex[i] = index[counter];
+                counter++;
+            }
+        }else {
+            WrongPlaces.put(x, index);
+        }
     }
 
     /**
@@ -217,6 +228,7 @@ public class GuessWord {
         System.out.println("Compleated in :: " + LoopCounter + " Iterations" );
         getLetters(nullIndex(), possibleWords);
         System.out.println("Best Guess :: " + getBestWord(possibleWords));
+        System.out.println(possibleWords);
         return possibleWords;
     }
 
